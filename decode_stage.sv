@@ -87,7 +87,7 @@ always_comb begin
     end
     else if (decode_inst_op == `INST_OP_ALU_R || decode_inst_op == `INST_OP_ALU_I) begin
         case (decode_inst[14:12])
-            3'b000: decode_alu_op = (decode_inst[30] ? `ALU_OP_SUB : `ALU_OP_ADD);
+            3'b000: decode_alu_op = ((decode_inst_op == `INST_OP_ALU_R && decode_inst[30]) ? `ALU_OP_SUB : `ALU_OP_ADD);
             3'b001: decode_alu_op = `ALU_OP_SLL;
             3'b010: decode_alu_op = `ALU_OP_SLT;
             3'b011: decode_alu_op = `ALU_OP_SLTU;

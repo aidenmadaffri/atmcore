@@ -22,7 +22,7 @@ logic fetch_valid;
 always_comb begin
     if (branch_taken) begin
         npc = target_pc; // Branch taken, use target PC
-        fetch_valid = 1'b1;
+        fetch_valid = 1'b0; // will be valid on the next cycle
     end
     else if (fetch_stall) begin
         npc = pc; // If stalled, keep the current PC
